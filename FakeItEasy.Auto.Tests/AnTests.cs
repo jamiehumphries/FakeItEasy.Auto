@@ -12,5 +12,11 @@
         {
             An.AutoFaked<ObjectWithNoDependencies>().Should().BeOfType<ObjectWithNoDependencies>();
         }
+
+        [Test]
+        public void Can_auto_fake_object_with_fakeable_dependencies()
+        {
+            An.AutoFaked<ObjectWithFakeableDependencies>().Should().BeOfType<ObjectWithFakeableDependencies>();
+        }
     }
 }
