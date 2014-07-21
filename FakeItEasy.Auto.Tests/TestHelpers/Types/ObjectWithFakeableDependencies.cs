@@ -1,6 +1,6 @@
-﻿namespace FakeItEasy.Auto.Tests.TestTypes
+﻿namespace FakeItEasy.Auto.Tests.TestHelpers.Types
 {
-    using FakeItEasy.Auto.Tests.TestInterfaces;
+    using FakeItEasy.Auto.Tests.TestHelpers.Interfaces;
 
     public class ObjectWithFakeableDependencies
     {

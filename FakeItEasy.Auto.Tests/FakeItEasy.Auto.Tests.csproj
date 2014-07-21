@@ -49,9 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnTests.cs" />
-    <Compile Include="TestInterfaces\IBar.cs" />
-    <Compile Include="TestTypes\ObjectWithFakeableDependencies.cs" />
-    <Compile Include="TestTypes\ObjectWithNoDependencies.cs" />
+    <Compile Include="TestHelpers\Interfaces\IBar.cs" />
+    <Compile Include="TestHelpers\Types\ObjectWithFakeableDependencies.cs" />
+    <Compile Include="TestHelpers\Types\ObjectWithNoDependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

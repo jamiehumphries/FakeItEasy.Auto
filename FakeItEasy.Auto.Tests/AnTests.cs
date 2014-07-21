@@ -1,6 +1,6 @@
 ﻿namespace FakeItEasy.Auto.Tests
 {
-    using FakeItEasy.Auto.Tests.TestTypes;
+    using FakeItEasy.Auto.Tests.TestHelpers.Types;
     using FluentAssertions;
     using NUnit.Framework;
 
