@@ -1,32 +1,34 @@
-##Example
+####Example
 
-    public interface IBar
+```csharp
+public interface IBar
+{
+    void DoSomething();
+}
+
+public class Foo
+{
+    private readonly IBar bar;
+
+    public Foo(IBar bar)
     {
-        void DoSomething();
+        this.bar = bar;
     }
 
-    public class Foo
+    public void MakeBarDoSomething()
     {
-        private readonly IBar bar;
-
-        public Foo(IBar bar)
-        {
-            this.bar = bar;
-        }
-
-        public void MakeBarDoSomething()
-        {
-            bar.DoSomething();
-        }
+        bar.DoSomething();
     }
+}
 
-    public class FooTests
+public class FooTests
+{
+    [Test]
+    public void Can_make_bar_do_something()
     {
-        [Test]
-        public void Can_make_bar_do_something()
-        {
-            var foo = An.AutoFaked<Foo>();
-            foo.MakeBarDoSomething();
-            A.CallTo(() => TheFake<IBar>.UsedBy(foo).DoSomething()).MustHaveHappened();
-        }
+        var foo = An.AutoFaked<Foo>();
+        foo.MakeBarDoSomething();
+        A.CallTo(() => TheFake<IBar>.UsedBy(foo).DoSomething()).MustHaveHappened();
     }
+}
+```
