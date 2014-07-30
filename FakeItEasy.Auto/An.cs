@@ -11,8 +11,10 @@
         public static T AutoFaked<T>()
         {
             var constructor = typeof(T).GetConstructors().First();
-            var paramaters = constructor.GetParameters().Select(p => Fake(p.ParameterType));
-            return (T)constructor.Invoke(paramaters.ToArray());
+            var fakedParameters = constructor.GetParameters().Select(p => Fake(p.ParameterType)).ToArray();
+            var autoFakedObject = (T)constructor.Invoke(fakedParameters);
+            FakeContainer.RegisterFakes(autoFakedObject, fakedParameters);
+            return autoFakedObject;
         }
 
         private static object Fake(Type parameterType)
