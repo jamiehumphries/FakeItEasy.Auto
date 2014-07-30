@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="AnTests.cs" />
     <Compile Include="TestHelpers\Interfaces\IBar.cs" />
+    <Compile Include="TestHelpers\ObjectAssertionsExtensions.cs" />
+    <Compile Include="TestHelpers\Types\Foo.cs" />
     <Compile Include="TestHelpers\Types\ObjectWithFakeableDependencies.cs" />
     <Compile Include="TestHelpers\Types\ObjectWithNoDependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
