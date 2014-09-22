@@ -5,6 +5,7 @@
     using FakeItEasy.Auto.Tests.TestHelpers.Types;
     using FluentAssertions;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     public class AnTests
@@ -25,6 +26,16 @@
         public void Auto_faked_dependencies_are_fakes()
         {
             An.AutoFaked<Foo>().Bar.Should().BeFake<IBar>();
+        }
+
+        [Test]
+        public void Throws_exception_if_type_has_no_public_constructor()
+        {
+            // When
+            Action autoFakingObjectWithNoPublicConstructor = () => An.AutoFaked<ObjectWithNoPublicConstructor>();
+
+            // Then
+            autoFakingObjectWithNoPublicConstructor.ShouldThrow<AutoFakeCreationException>().Which.Message.Should().Contain("no public constructor");
         }
     }
 }

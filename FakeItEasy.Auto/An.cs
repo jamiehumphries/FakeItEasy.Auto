@@ -1,6 +1,7 @@
 ﻿namespace FakeItEasy.Auto
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -10,11 +11,23 @@
 
         public static T AutoFaked<T>()
         {
-            var constructor = typeof(T).GetConstructors().First();
+            var constructors = GetPublicConstructors<T>();
+            var constructor = constructors.First();
             var fakedParameters = constructor.GetParameters().Select(p => Fake(p.ParameterType)).ToArray();
             var autoFakedObject = (T)constructor.Invoke(fakedParameters);
             FakeContainer.RegisterFakes(autoFakedObject, fakedParameters);
             return autoFakedObject;
+        }
+
+        private static IEnumerable<ConstructorInfo> GetPublicConstructors<T>()
+        {
+            var constructors = typeof(T).GetConstructors();
+            if (!constructors.Any())
+            {
+                var message = String.Format("Failed to auto fake the type {0}, because it has no public constructor.", typeof(T));
+                throw new AutoFakeCreationException(message);
+            }
+            return constructors;
         }
 
         private static object Fake(Type parameterType)
