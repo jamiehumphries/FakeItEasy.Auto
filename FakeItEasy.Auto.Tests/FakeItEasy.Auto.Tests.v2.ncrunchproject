@@ -22,4 +22,9 @@
   <UseCPUArchitecture>AutoDetect</UseCPUArchitecture>
   <MSTestThreadApartmentState>STA</MSTestThreadApartmentState>
   <BuildProcessArchitecture>x86</BuildProcessArchitecture>
+  <IgnoredTests>
+    <NamedTestSelector>
+      <TestName>FakeItEasy.Auto.Tests.FakeContainerTests.Fakes_are_registered_weakly_and_so_eligible_for_garbage_collection</TestName>
+    </NamedTestSelector>
+  </IgnoredTests>
 </ProjectConfiguration>

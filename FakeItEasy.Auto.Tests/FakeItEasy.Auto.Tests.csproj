@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FakeItEasy, Version=1.22.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FakeItEasy.1.22.0\lib\net40\FakeItEasy.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAssertions">
       <HintPath>..\packages\FluentAssertions.3.0.107\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
@@ -49,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnTests.cs" />
+    <Compile Include="FakeContainerTests.cs" />
     <Compile Include="TestHelpers\Interfaces\IBar.cs" />
     <Compile Include="TestHelpers\ObjectAssertionsExtensions.cs" />
     <Compile Include="TestHelpers\Types\Foo.cs" />
