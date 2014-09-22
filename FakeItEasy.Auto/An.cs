@@ -20,8 +20,7 @@
                 }
                 catch (TargetInvocationException) {}
             }
-
-            var message = String.Format("Failed to auto fake the type {0}, because no constructor had parameters that were all fakeable.", typeof(T));
+            var message = String.Format("Failed to auto fake the type {0} because no constructor had parameters that were all fakeable.", typeof(T));
             throw new AutoFakeCreationException(message);
         }
 
@@ -30,7 +29,7 @@
             var constructors = typeof(T).GetConstructors();
             if (!constructors.Any())
             {
-                var message = String.Format("Failed to auto fake the type {0}, because it has no public constructor.", typeof(T));
+                var message = String.Format("Failed to auto fake the type {0} because it has no public constructor.", typeof(T));
                 throw new AutoFakeCreationException(message);
             }
             return constructors;
