@@ -45,6 +45,7 @@
     <Compile Include="An.cs" />
     <Compile Include="AutoFakeCreationException.cs" />
     <Compile Include="FakeContainer.cs" />
+    <Compile Include="FakeRetrievalException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheFake.cs" />
   </ItemGroup>
