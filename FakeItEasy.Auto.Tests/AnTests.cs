@@ -29,6 +29,12 @@
         }
 
         [Test]
+        public void Constructor_with_most_parameters_is_preferred()
+        {
+            An.AutoFaked<ObjectWithMultipleConstructors>().WasMadeFromConstructorWithMostParameters.Should().BeTrue();
+        }
+
+        [Test]
         public void Throws_exception_if_type_has_no_public_constructor()
         {
             // When

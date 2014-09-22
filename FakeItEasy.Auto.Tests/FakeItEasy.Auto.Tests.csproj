@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AnTests.cs" />
     <Compile Include="FakeContainerTests.cs" />
+    <Compile Include="TestHelpers\Types\ObjectWithMultipleConstructors.cs" />
     <Compile Include="TestHelpers\Interfaces\IBar.cs" />
     <Compile Include="TestHelpers\ObjectAssertionsExtensions.cs" />
     <Compile Include="TestHelpers\Types\Foo.cs" />

@@ -11,7 +11,7 @@
 
         public static T AutoFaked<T>()
         {
-            var constructors = GetPublicConstructors<T>();
+            var constructors = GetPublicConstructors<T>().OrderByDescending(ctor => ctor.GetParameters().Count());
             foreach (var constructor in constructors)
             {
                 try
