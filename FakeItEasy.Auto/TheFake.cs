@@ -13,7 +13,7 @@
                 throw new ArgumentNullException("autoFakedObject");
             }
             var fakedParameters = GetFakesUsedBy(autoFakedObject);
-            return (T)fakedParameters.First(p => Fake.GetFakeManager(p).FakeObjectType == typeof(T));
+            return GetSingleOfRequestedType(fakedParameters);
         }
 
         private static IEnumerable<object> GetFakesUsedBy(object autoFakedObject)
@@ -25,6 +25,18 @@
                 throw new FakeRetrievalException(message);
             }
             return fakes;
+        }
+
+        private static T GetSingleOfRequestedType(IEnumerable<object> fakedParameters)
+        {
+            var fake = (T)fakedParameters.FirstOrDefault(p => Fake.GetFakeManager(p).FakeObjectType == typeof(T));
+            // ReSharper disable once CompareNonConstrainedGenericWithNull
+            if (fake == null)
+            {
+                var message = String.Format("The auto faked object did not use a fake of type {0}.", typeof(T));
+                throw new FakeRetrievalException(message);
+            }
+            return fake;
         }
 
         private static object ExpectedUsage(object autoFakedObject)

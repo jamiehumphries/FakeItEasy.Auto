@@ -28,5 +28,18 @@
             // Then
             retrivingFakeBar.ShouldThrow<FakeRetrievalException>().Which.Message.Should().Contain("was not auto faked");
         }
+
+        [Test]
+        public void Exception_thrown_if_no_fake_is_registered_for_type()
+        {
+            // Given
+            var foo = An.AutoFaked<Foo>();
+
+            // When
+            Action retrievingBaz = () => TheFake<IBaz>.UsedBy(foo);
+
+            // Then
+            retrievingBaz.ShouldThrow<FakeRetrievalException>().Which.Message.Should().Contain("did not use a fake of type");
+        }
     }
 }
