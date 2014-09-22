@@ -10,7 +10,7 @@
     public class TheFakeTests
     {
         [Test]
-        public void Can_retrieve_faked_dependencies_on_autofaked_object()
+        public void Can_retrieve_faked_dependencies_on_auto_faked_object()
         {
             var foo = An.AutoFaked<Foo>();
             TheFake<IBar>.UsedBy(foo).Should().Be(foo.Bar).And.BeFake<IBar>();
