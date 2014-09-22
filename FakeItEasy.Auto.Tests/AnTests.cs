@@ -1,6 +1,7 @@
 ﻿namespace FakeItEasy.Auto.Tests
 {
     using FakeItEasy.Auto.Tests.TestHelpers;
+    using FakeItEasy.Auto.Tests.TestHelpers.Interfaces;
     using FakeItEasy.Auto.Tests.TestHelpers.Types;
     using FluentAssertions;
     using NUnit.Framework;
@@ -23,7 +24,7 @@
         [Test]
         public void Auto_faked_dependencies_are_fakes()
         {
-            An.AutoFaked<Foo>().Bar.Should().BeFake();
+            An.AutoFaked<Foo>().Bar.Should().BeFake<IBar>();
         }
     }
 }
