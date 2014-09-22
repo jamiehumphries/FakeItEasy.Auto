@@ -25,14 +25,6 @@
             throw new AutoFakeCreationException(message);
         }
 
-        private static T AutoFakeFromConstructor<T>(ConstructorInfo constructor)
-        {
-            var fakedParameters = constructor.GetParameters().Select(p => Fake(p.ParameterType)).ToArray();
-            var autoFakedObject = (T)constructor.Invoke(fakedParameters);
-            FakeContainer.RegisterFakes(autoFakedObject, fakedParameters);
-            return autoFakedObject;
-        }
-
         private static IEnumerable<ConstructorInfo> GetPublicConstructors<T>()
         {
             var constructors = typeof(T).GetConstructors();
@@ -42,6 +34,14 @@
                 throw new AutoFakeCreationException(message);
             }
             return constructors;
+        }
+
+        private static T AutoFakeFromConstructor<T>(ConstructorInfo constructor)
+        {
+            var fakedParameters = constructor.GetParameters().Select(p => Fake(p.ParameterType)).ToArray();
+            var autoFakedObject = (T)constructor.Invoke(fakedParameters);
+            FakeContainer.RegisterFakes(autoFakedObject, fakedParameters);
+            return autoFakedObject;
         }
 
         private static object Fake(Type parameterType)
