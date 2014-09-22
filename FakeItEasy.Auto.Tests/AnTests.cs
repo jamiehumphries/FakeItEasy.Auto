@@ -37,5 +37,15 @@
             // Then
             autoFakingObjectWithNoPublicConstructor.ShouldThrow<AutoFakeCreationException>().Which.Message.Should().Contain("no public constructor");
         }
+
+        [Test]
+        public void Throws_exception_if_parameters_cannot_be_faked()
+        {
+            // When
+            Action autoFakingObjectWithUnfakeableDependencies = () => An.AutoFaked<ObjectWithUnfakeableDependencies>();
+
+            // Then
+            autoFakingObjectWithUnfakeableDependencies.ShouldThrow<AutoFakeCreationException>().Which.Message.Should().Contain("no constructor had parameters that were all fakeable");
+        }
     }
 }

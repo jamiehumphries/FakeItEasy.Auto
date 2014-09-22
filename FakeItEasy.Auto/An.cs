@@ -12,7 +12,21 @@
         public static T AutoFaked<T>()
         {
             var constructors = GetPublicConstructors<T>();
-            var constructor = constructors.First();
+            foreach (var constructor in constructors)
+            {
+                try
+                {
+                    return AutoFakeFromConstructor<T>(constructor);
+                }
+                catch (TargetInvocationException) {}
+            }
+
+            var message = String.Format("Failed to auto fake the type {0}, because no constructor had parameters that were all fakeable.", typeof(T));
+            throw new AutoFakeCreationException(message);
+        }
+
+        private static T AutoFakeFromConstructor<T>(ConstructorInfo constructor)
+        {
             var fakedParameters = constructor.GetParameters().Select(p => Fake(p.ParameterType)).ToArray();
             var autoFakedObject = (T)constructor.Invoke(fakedParameters);
             FakeContainer.RegisterFakes(autoFakedObject, fakedParameters);
