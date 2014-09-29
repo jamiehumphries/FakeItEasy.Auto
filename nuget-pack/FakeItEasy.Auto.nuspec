@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>FakeItEasy.Auto</id>
+    <version>$version$</version>
+    <title>FakeItEasy.Auto</title>
+    <authors>Jamie Humphries</authors>
+    <owners>Jamie Humphries</owners>
+    <projectUrl>https://github.com/jamiehumphries/FakeItEasy.Auto</projectUrl>
+    <licenseUrl>https://github.com/jamiehumphries/FakeItEasy.Auto/blob/master/LICENSE.md</licenseUrl>
+    <iconUrl>https://raw.githubusercontent.com/jamiehumphries/FakeItEasy.Auto/master/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A really simple little autofaker for FakeItEasy.</description>
+    <tags>FakeItEasy auto automock automocker autofake autofaker mock fake</tags>
+    <copyright>Copyright 2014</copyright>
+    <dependencies>
+      <dependency id="FakeItEasy" version="1.24.0" />
+    </dependencies>
+  </metadata>
+</package>
