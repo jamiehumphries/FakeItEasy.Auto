@@ -1,6 +1,10 @@
 ####Example
 
 ```csharp
+using FakeItEasy;
+using FakeItEasy.Auto;
+using NUnit.Framework;
+
 public interface IBar
 {
     void DoSomething();
