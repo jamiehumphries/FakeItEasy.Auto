@@ -30,9 +30,15 @@ public class FooTests
     [Test]
     public void Can_make_bar_do_something()
     {
+        // Given
         var foo = An.AutoFaked<Foo>();
+        var bar = TheFake<IBar>.UsedBy(foo);
+        
+        // When
         foo.MakeBarDoSomething();
-        A.CallTo(() => TheFake<IBar>.UsedBy(foo).DoSomething()).MustHaveHappened();
+        
+        // Then
+        A.CallTo(() => bar.DoSomething()).MustHaveHappened();
     }
 }
 ```
