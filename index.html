@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FakeItEasy.Auto by jamiehumphries</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>FakeItEasy.Auto</h1>
+        <p>A simple little auto faker for FakeItEasy.</p>
+
+        <p class="view"><a href="https://github.com/jamiehumphries/FakeItEasy.Auto">View the Project on GitHub <small>jamiehumphries/FakeItEasy.Auto</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jamiehumphries/FakeItEasy.Auto/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jamiehumphries/FakeItEasy.Auto/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jamiehumphries/FakeItEasy.Auto">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h4>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h4>
+
+<div class="highlight highlight-csharp"><pre><span class="k">using</span> <span class="nn">FakeItEasy</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">FakeItEasy.Auto</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NUnit.Framework</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">interface</span> <span class="n">IBar</span>
+<span class="p">{</span>
+    <span class="k">void</span> <span class="nf">DoSomething</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IBar</span> <span class="n">bar</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">Foo</span><span class="p">(</span><span class="n">IBar</span> <span class="n">bar</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">bar</span> <span class="p">=</span> <span class="n">bar</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">MakeBarDoSomething</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">bar</span><span class="p">.</span><span class="n">DoSomething</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FooTests</span>
+<span class="p">{</span>
+<span class="na">    [Test]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Can_make_bar_do_something</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Given</span>
+        <span class="kt">var</span> <span class="n">foo</span> <span class="p">=</span> <span class="n">An</span><span class="p">.</span><span class="n">AutoFaked</span><span class="p">&lt;</span><span class="n">Foo</span><span class="p">&gt;();</span>
+        <span class="kt">var</span> <span class="n">bar</span> <span class="p">=</span> <span class="n">TheFake</span><span class="p">&lt;</span><span class="n">IBar</span><span class="p">&gt;.</span><span class="n">UsedBy</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
+
+        <span class="c1">// When</span>
+        <span class="n">foo</span><span class="p">.</span><span class="n">MakeBarDoSomething</span><span class="p">();</span>
+
+        <span class="c1">// Then</span>
+        <span class="n">A</span><span class="p">.</span><span class="n">CallTo</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">bar</span><span class="p">.</span><span class="n">DoSomething</span><span class="p">()).</span><span class="n">MustHaveHappened</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jamiehumphries">jamiehumphries</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
