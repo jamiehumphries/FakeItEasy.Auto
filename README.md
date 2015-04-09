@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/h2iirqumti2wfd22/branch/master?svg=true)](https://ci.appveyor.com/project/jamiehumphries/fakeiteasy-auto/branch/master)
+
 ####Example
 
 ```csharp
