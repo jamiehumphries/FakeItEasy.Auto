@@ -26,7 +26,7 @@
             Action retrivingFakeBar = () => TheFake<IBar>.UsedBy(foo);
 
             // Then
-            retrivingFakeBar.ShouldThrow<FakeRetrievalException>().Which.Message.Should().Contain("was not auto faked");
+            retrivingFakeBar.Should().Throw<FakeRetrievalException>().Which.Message.Should().Contain("was not auto faked");
         }
 
         [Test]
@@ -39,7 +39,7 @@
             Action retrievingBaz = () => TheFake<IBaz>.UsedBy(foo);
 
             // Then
-            retrievingBaz.ShouldThrow<FakeRetrievalException>().Which.Message.Should().Contain("did not use a fake of type");
+            retrievingBaz.Should().Throw<FakeRetrievalException>().Which.Message.Should().Contain("did not use a fake of type");
         }
     }
 }

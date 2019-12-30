@@ -41,7 +41,7 @@
             Action autoFakingObjectWithNoPublicConstructor = () => An.AutoFaked<ObjectWithNoPublicConstructor>();
 
             // Then
-            autoFakingObjectWithNoPublicConstructor.ShouldThrow<AutoFakeCreationException>().Which.Message.Should().Contain("no public constructor");
+            autoFakingObjectWithNoPublicConstructor.Should().Throw<AutoFakeCreationException>().Which.Message.Should().Contain("no public constructor");
         }
 
         [Test]
@@ -51,7 +51,7 @@
             Action autoFakingObjectWithUnfakeableDependencies = () => An.AutoFaked<ObjectWithUnfakeableDependencies>();
 
             // Then
-            autoFakingObjectWithUnfakeableDependencies.ShouldThrow<AutoFakeCreationException>().Which.Message.Should().Contain("no constructor had parameters that were all fakeable");
+            autoFakingObjectWithUnfakeableDependencies.Should().Throw<AutoFakeCreationException>().Which.Message.Should().Contain("no constructor had parameters that were all fakeable");
         }
     }
 }
