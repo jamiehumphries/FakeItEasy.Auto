@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/h2iirqumti2wfd22/branch/master?svg=true)](https://ci.appveyor.com/project/jamiehumphries/fakeiteasy-auto/branch/master)
 
-## Migrated to .NetCore 2.1
+## Migrated to .NetCore 2.0
 
 ####Example
 
