@@ -18,7 +18,8 @@
                 {
                     return AutoFakeFromConstructor<T>(constructor);
                 }
-                catch (TargetInvocationException) {}
+                catch (TargetInvocationException) { }
+                catch (ArgumentException) { }
             }
             var message = String.Format("Failed to auto fake the type {0} because no constructor had parameters that were all fakeable.", typeof(T));
             throw new AutoFakeCreationException(message);
